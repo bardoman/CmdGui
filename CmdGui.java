@@ -86,7 +86,7 @@ public class CmdGui extends Application {
         textField.setMinWidth(globalWidth);
 
         textField.setEditable(true);
-
+/*
         javafx.event.EventHandler<ActionEvent> event = new javafx.event.EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 doCommand(textField.getText());
@@ -94,8 +94,8 @@ public class CmdGui extends Application {
         }; 
 
         // when enter is pressed 
-        textField.setOnAction(event); 
-
+      textField.setOnAction(event); 
+ */ 
         gridPane.add(textField, 3,1);
 
         textArea.setWrapText(true);
@@ -110,7 +110,7 @@ public class CmdGui extends Application {
                                                          new Thread(new Runnable() {
                                                                         public void run() {
                                                                             textField.setText(historyCombo.getValue().toString());
-                                                                            doCommand(historyCombo.getValue().toString());
+                                                                       //     doCommand(historyCombo.getValue().toString());
                                                                         }
                                                                     });
                                                          thread.start();   
@@ -155,6 +155,8 @@ public class CmdGui extends Application {
                 BufferedReader in0 = new BufferedReader(new InputStreamReader(p0.getInputStream()));
                 while((line0 = in0.readLine()) != null) {
                     textArea.appendText(line0);
+
+                    textArea.appendText("\n");
                 }
                 in0.close();
             } else {
@@ -162,6 +164,8 @@ public class CmdGui extends Application {
                 BufferedReader err0 = new BufferedReader(new InputStreamReader(p0.getErrorStream()));
                 while((errLine0 = err0.readLine()) != null) {
                     textArea.appendText(errLine0);
+
+                    textArea.appendText("\n");
                 }
                 err0.close(); 
                 //  System.exit(1);
