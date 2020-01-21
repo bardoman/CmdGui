@@ -86,7 +86,7 @@ public class CmdGui extends Application {
         textField.setMinWidth(globalWidth);
 
         textField.setEditable(true);
-/*
+
         javafx.event.EventHandler<ActionEvent> event = new javafx.event.EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 doCommand(textField.getText());
@@ -95,7 +95,7 @@ public class CmdGui extends Application {
 
         // when enter is pressed 
       textField.setOnAction(event); 
- */ 
+ 
         gridPane.add(textField, 3,1);
 
         textArea.setWrapText(true);
