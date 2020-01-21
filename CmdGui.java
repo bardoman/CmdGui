@@ -23,18 +23,18 @@ public class CmdGui extends Application {
     ArrayList<String> commandList = new ArrayList();
     String serFile="ser.xml";
     final ComboBox historyCombo = new ComboBox();
-    int globalWidth=350;
-    int textAreaDim=500;
+   
+    int frameDim=1000;
+     int globalWidth=frameDim-200;
 
     @Override
     public void start(Stage primaryStage) {
         serIn();
-        if(commandList.size()==0)
-        {
+        if(commandList.size()==0) {
             commandList.add("");
         }
         textField=new TextField(commandList.get(0));
-        
+
 
         updateCombo();
 
@@ -65,7 +65,7 @@ public class CmdGui extends Application {
 
         GridPane gridPane = new GridPane();    
 
-        gridPane.setMinSize(500, 500); 
+        gridPane.setMinSize(frameDim, frameDim); 
 
         gridPane.setPadding(new Insets(10, 10, 10, 10));  
 
@@ -122,7 +122,7 @@ public class CmdGui extends Application {
 
         gridPane.add(textArea, 3, 3);
 
-        Scene scene = new Scene(gridPane, textAreaDim, textAreaDim);
+        Scene scene = new Scene(gridPane, frameDim, frameDim);
 
         primaryStage.setTitle("Command Executor");
         primaryStage.setScene(scene);
@@ -130,7 +130,11 @@ public class CmdGui extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        try {
+            launch(args);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     void doCommand(String cmd) {
@@ -190,7 +194,7 @@ public class CmdGui extends Application {
     }
 
     void updateCombo() {
-               
+
         ObservableList<String> oList = FXCollections.observableArrayList(commandList);
 
         historyCombo.setItems(oList);
